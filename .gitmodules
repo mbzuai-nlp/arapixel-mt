@@ -1,0 +1,3 @@
+[submodule "PixelSmolLM/pixel"]
+	path = PixelSmolLM/pixel
+	url = https://github.com/Abdulrhman-shaheen/pixel-translation.git

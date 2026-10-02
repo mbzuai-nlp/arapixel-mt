@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pixel-translation"
+version = "0.1.0"
+description = "Arabic-to-English translation experiments with pixel, byte, decoder-only, and vocab-augmented SmolLM models."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "accelerate==1.10.1",
+    "datasets==4.5.0",
+    "evaluate==0.4.5",
+    "huggingface-hub==0.36.2",
+    "numpy==1.26.4",
+    "pandas==2.3.3",
+    "pillow==11.3.0",
+    "sacrebleu==2.6.0",
+    "tokenizers==0.13.3",
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+    "transformers==4.31.0",
+    "tqdm==4.67.3",
+    "wandb==0.23.1",
+]
+
+[project.optional-dependencies]
+data = [
+    "camel-tools==1.5.7",
+    "pycld3==0.22",
+]
+rendering = [
+    "fonttools==4.59.0",
+    "manimpango==0.4.1",
+    "opencv-python-headless==4.11.0.86",
+    "pycairo==1.21.0",
+    "pygame==2.6.1",
+    "PyGObject==3.42.0",
+    "regex==2026.1.15",
+]
+comet = [
+    "unbabel-comet==2.2.7",
+]
+
+[tool.setuptools.packages.find]
+where = [
+    ".",
+    "PixelSmolLM/pixel/src",
+]
+include = [
+    "BytesSmolLM*",
+    "DecoderOnly*",
+    "PixelSmolLM*",
+    "dataset_processing*",
+    "finetuning*",
+    "evaluation*",
+    "training*",
+    "msa_curriculum*",
+    "pixel*",
+]
+exclude = [
+    "*.wandb*",
+    "*.eval_logs*",
+    "PixelSmolLM.pixel*",
+]
+
+[tool.setuptools.package-data]
+"PixelSmolLM.rendering" = [
+    "fonts/GoNotoCurrent.ttf",
+    "fonts/fallback_fonts/*",
+]
